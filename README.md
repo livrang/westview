@@ -91,6 +91,8 @@ Install the Westview, from prompt :
 npm i westview  
 ```
 
+## Author
+Mridul Thakur
 
 ## License
 
