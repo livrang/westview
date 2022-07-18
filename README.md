@@ -1,6 +1,7 @@
 # Westview 
 # _The fastest, simplest nodejs database._
-<img  src="https://img.shields.io/badge/npmjs-sinmenc-red?style=plastic&logo=npm" />
+
+[![NPM version][npm-version-image]][npm-url] [![Github Repo][github-repo-image]][github-repo-url]
 
 **`⚠ WARNING: In development mode, so not recommended to use for public use.`**  
 
@@ -23,8 +24,8 @@ var wv = require("westview");
 
 wv.set({dbpath : "./mydb", oneFileSize : 1200}); // or create config yourself
 /*
-     or
-     wv.set("./config.json") 
+ or
+ wv.set("./config.json") 
  */
 
 console.log(wv.add("name", "Jeff Bezos")); //true
@@ -32,7 +33,23 @@ console.log(wv.add("name", "Jeff Bezos")); //true
 
 console.log(wv.get("name")) // "Jeff Bezos"
 ```
+- ### .set({config}) or .set("./configfile.json")
 
+    Used to set a config file.
+    Config file takes two items : 
+    - dbpath : Path (A folder) where you want database to be created
+    - oneFileSize [in bytes] : To retrieve and store data faster, westview stores it in chunks of file. So, you’ll have to provide the mazimum size of one file. Changing it can affect the performance. You can adjust it according to the average or maximum size of data you can store.
+- ### .add("key", "data")
+ Used to add data with a key. You can retrieve the data later using the key. **returns 1 if the key is already used .**
+- ### .get("key")
+Used to retrieve the data with help of the key, **returns 1 if there is an error.** 
+- ### .exists("key")
+ **Return *false***, if key does not exists.
+ **Return *true***, if key already exists.
+- ### .remove("key")
+ Removes the key and data, **returns 1 if the key does not exists**
+- ### .update("key", "data")
+ Update the data in already created key, **return 1 if the key does not exists**
 ## Features
 
 - Simple - Can add and retrieve data with a simple key.
@@ -88,14 +105,17 @@ Westview requires [Node.js](https://nodejs.org/) to run.
 Install the Westview, from prompt : 
 
 ```sh
-npm i westview  
+npm i westview
 ```
 
-## Author
-Mridul Thakur
 
 ## License
 
 MIT
 
 **Simple Database, Hell Yeah!**
+
+[npm-version-image]: https://badgen.net/badge/npm/v1.0.81/red
+[npm-url]: https://npmjs.org/package/express
+[github-repo-image]: https://badgen.net/badge/repo/westview/green?icon=github
+[github-repo-url]: https://github.com/livrang/westview
